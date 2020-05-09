@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 const bodyParser = require('body-parser')
-const generate_talk = require('./generate_talk')
+const generateTalk = require('./generateTalk')
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -19,8 +19,8 @@ app.get('/', (req, res) => {
 })
 app.post('/', (req, res) => {
   const professions = req.body
-  const trashTalk = generate_talk(professions)
-  res.render('index', { trashTalk: trashTalk })
+  const trashTalk = generateTalk(professions)
+  res.render('index', { trashTalk })
 })
 // starts the express server and listening for connections.
 app.listen(port, () => {
